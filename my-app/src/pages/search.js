@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import API from "../utils/API";
-import SearchForm from "../components/searchForm";
+import SearchForm from "../components/Search";
 import SearchResults from "../components/searchResults";
  
 
