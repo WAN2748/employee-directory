@@ -21,11 +21,11 @@ class Search extends Component {
       .catch(err => console.log(err));
   }
 
-  handleInputChange = event => {
+  inputChange = event => {
     this.setState({ search: event.target.value });
   };
 
-  handleFormSubmit = event => {
+  formSubmit = event => {
     event.preventDefault();
     API.getProfileByName(this.state.search)
       .then(res => {
@@ -42,8 +42,8 @@ class Search extends Component {
         <div style={{ minHeight: "80%" }}>
           <h1 className="text-center">Search By Name!</h1>
           <SearchForm
-            handleFormSubmit={this.handleFormSubmit}
-            handleInputChange={this.handleInputChange}
+            formSubmit={this.formSubmit}
+            inputChange={this.inputChange}
             employees={this.state.name}
           />
           <SearchResults results={this.state.results} />
