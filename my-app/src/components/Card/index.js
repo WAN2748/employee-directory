@@ -3,7 +3,7 @@ import Table from "../Table/table";
 import Nav from "../NavBar";
 import API from "../../utils/API";
 
-export default class DataArea extends Component {
+export default class Card extends Component {
     state = {
         users: [{}],
         order: "descend",
@@ -18,7 +18,7 @@ export default class DataArea extends Component {
         { name: "DOB", width: "15%" }
     ]
 
-    sort = heading => {
+    handleSort = heading => {
         if(this.state.order === "descend") {
             this.setState({
             order: "ascend"
@@ -28,7 +28,7 @@ export default class DataArea extends Component {
             order: "descend"})
         }
 
-        const compareFnc = (a, b) => {
+        const compare = (a, b) => {
             if (this.state.order === "ascend") {
                 
                 if (a[heading] === undefined) {
@@ -57,7 +57,7 @@ export default class DataArea extends Component {
                 }
             }
         }
-        const sortedUsers = this.state.filteredUsers.sort(compareFnc);
+        const sortedUsers = this.state.filteredUsers.sort(compare);
         this.setState({filteredUsers: sortedUsers });
     }
 
@@ -76,6 +76,7 @@ export default class DataArea extends Component {
 
     componentDidMount(){
         API.getUsers().then(results => {
+            console.log(results)
             this.setState({
                 users: results.data.results,
                 filteredUsers: results.data.results
@@ -91,7 +92,7 @@ export default class DataArea extends Component {
                     <Table
                     headings={this.headings}
                     users={this.state.filteredUsers}
-                    sort={this.handleSort}
+                    handleSort={this.handleSort}
                     />
                 </div>
             </>
