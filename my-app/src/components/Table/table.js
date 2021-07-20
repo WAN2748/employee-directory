@@ -1,7 +1,7 @@
 import React from "react";
 import CardInfo from "../CardInfo";
 
-function Table({ headings, users, handleSort}) {
+function Table({ headings, users, sort}) {
     return (
         <div className="table mt-5">
             <table
@@ -15,7 +15,7 @@ function Table({ headings, users, handleSort}) {
                                         key={name}
                                         style={{ width }}
                                         onClick={() => {
-                                            handleSort(name.toLowerCase());
+                                            sort(name.toLowerCase());
                                         }}
                                         >
                                             {name}

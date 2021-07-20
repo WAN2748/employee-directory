@@ -1,7 +1,7 @@
 import React from "react";
 import "../Search/style.css";
 
-function Search({ handleSearchChange }){
+function Search({ searchChange }){
     return (
         <div className="searchbox">
             <form className="form-inline">
@@ -9,7 +9,7 @@ function Search({ handleSearchChange }){
                     type="search"
                     placeholder="Search"
                     aria-label="Search"
-                    onChange={e=> handleSearchChange(e)}
+                    onChange={e=> searchChange(e)}
                 />
             </form>
         </div>

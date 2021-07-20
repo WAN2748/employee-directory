@@ -18,7 +18,7 @@ export default class Card extends Component {
         { name: "DOB", width: "15%" }
     ]
 
-    handleSort = heading => {
+    sort = heading => {
         if(this.state.order === "descend") {
             this.setState({
             order: "ascend"
@@ -38,7 +38,7 @@ export default class Card extends Component {
                 }
                 
                 else if (heading === "name") {
-                    return a[heading].first.localeCompare(b[heading].first);
+                    return a[heading].first.localCompare(b[heading].first);
                 } else {
                     return a[heading] - b[heading];
                 }
@@ -51,7 +51,7 @@ export default class Card extends Component {
                 }    
             
                 else if (heading === "name") {
-                    return b[heading].first.localeCompare(a[heading].first);
+                    return b[heading].first.localCompare(a[heading].first);
                 } else {
                     return b[heading] - a[heading];
                 }
@@ -61,7 +61,7 @@ export default class Card extends Component {
         this.setState({filteredUsers: sortedUsers });
     }
 
-    handleSearchChange = event => {
+    searchChange = event => {
         console.log(event.target.value);
         const filter = event.target.value;
         const filteredList = this.state.users.filter(item => {
@@ -75,7 +75,7 @@ export default class Card extends Component {
     }
 
     componentDidMount(){
-        API.getUsers().then(results => {
+        API.getUsersProfile().then(results => {
             console.log(results)
             this.setState({
                 users: results.data.results,
@@ -87,12 +87,12 @@ export default class Card extends Component {
     render() {
         return (
             <>
-                <Nav handleSearchChange={this.handleSearchChange} />
+                <Nav searchChange={this.searchChange} />
                 <div className="data-area">
                     <Table
                     headings={this.headings}
                     users={this.state.filteredUsers}
-                    handleSort={this.handleSort}
+                    sort={this.sort}
                     />
                 </div>
             </>
