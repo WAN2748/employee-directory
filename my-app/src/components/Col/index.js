@@ -7,3 +7,4 @@ function Col(props) {
 }
 
 export default Col;
+

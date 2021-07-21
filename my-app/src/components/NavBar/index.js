@@ -12,4 +12,5 @@ function Nav({ searchChange }) {
     );
 }
 
+
 export default Nav;
